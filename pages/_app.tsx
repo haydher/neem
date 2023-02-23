@@ -1,10 +1,10 @@
 import "@/styles/tailwind.css";
 import type { AppProps } from "next/app";
-import { Inter } from "@next/font/google";
+import { Rubik } from "@next/font/google";
 
-const interFont = Inter({
+const interFont = Rubik({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-rubik",
   display: "swap",
 });
 
