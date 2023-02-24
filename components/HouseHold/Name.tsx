@@ -1,11 +1,21 @@
-import React from "react";
-import NameType from "../../Types/NameType";
+type Props = {
+  readonly fullName: string;
+  readonly nickName: string;
+};
 
-export default function Name({ fullName, nickName }: NameType) {
+export default function Name({ fullName, nickName }: Props): JSX.Element {
+  function trimFullName() {
+    if (fullName?.length > 10) {
+      return `${fullName.slice(0, 10)}...`;
+    }
+
+    return fullName;
+  }
+
   return (
     <div className="flex gap-2">
       <Profile />
-      <p>{fullName ?? ""}</p>
+      <p>{trimFullName() ?? ""}</p>
       <p className="font-light text-light">({nickName ?? ""})</p>
     </div>
   );

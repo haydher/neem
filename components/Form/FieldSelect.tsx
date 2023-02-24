@@ -1,18 +1,19 @@
-import { useState } from "react";
+type Props = {
+  readonly value: string | null;
+  readonly disabled: boolean;
+  readonly onChange: (value: string) => void;
+};
 
-export default function FieldSelect({ value }: { value: string | null }): JSX.Element {
-  const [fieldValue, setValue] = useState(value);
-
-  function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
-    setValue(event.target.value);
-  }
+export default function FieldSelect({ value, onChange, disabled }: Props): JSX.Element {
+  const disabledClass = disabled ? "opacity-50 pointer-events-none bg-disabled" : "";
+  const defaultClass = "p-3 border border-border rounded-md focus:ring-primary focus:border-primary block w-full";
 
   return (
     <select
+      className={`${defaultClass} ${disabledClass}`}
       id="insurance"
-      value={fieldValue ? fieldValue : ""}
-      onChange={handleChange}
-      className="p-3 border border-border rounded-md focus:ring-primary focus:border-primary block w-full "
+      onChange={(event) => onChange(event.target.value)}
+      value={value ?? ""}
     >
       {["Primary", "Secondary"].map((item) => {
         return (

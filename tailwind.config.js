@@ -9,6 +9,7 @@ module.exports = {
         primary: "#70C4BB",
         light: "#9DA7BE",
         border: "#415b7933",
+        disabled: "#EFF1F5",
       },
       spacing: {
         primary: "24px",

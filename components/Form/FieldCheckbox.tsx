@@ -1,21 +1,14 @@
-import React, { useState } from "react";
-import FieldCheckboxType from "../../Types/FieldCheckbox";
+type Props = {
+  readonly checked: boolean;
+  readonly onChange: () => void;
+};
 
-export default function FieldCheckbox({ checked, onChange }: FieldCheckboxType): JSX.Element {
-  const [fieldChecked, setChecked] = useState(checked);
-
-  function handleChange() {
-    const toggle = !fieldChecked;
-
-    onChange(toggle);
-    setChecked(toggle);
-  }
-
+export default function FieldCheckbox({ checked, onChange }: Props): JSX.Element {
   return (
     <input
       type="checkbox"
-      checked={fieldChecked}
-      onChange={handleChange}
+      checked={checked}
+      onChange={() => onChange()}
       className="w-primary h-primary accent-primary rounded-sm focus:accent-primary"
     />
   );
